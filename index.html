@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./style.min.css">
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="browser-window">
+        <div class="browser-ui">
+          <div class="browser-ui-circle"></div>
+          <div class="browser-ui-circle"></div>
+          <div class="browser-ui-circle"></div>
+        </div>
+        <div class="browser-content">
+          <div class="tools">
+            <div class="toolButton addBtn" onclick="addRandom(12)"><h2>S</h2></div>
+            <div class="toolButton addBtn" onclick="addRandom(24)"><h2>M</h2></div>
+            <div class="toolButton addBtn" onclick="addRandom(36)"><h2>L</h2></div>
+            <div id="toggleText" class="toolButton"><h2>T</h2></div>
+            <div class="toolButton" onclick="deleteAll()"><span>D</span></div>
+          </div>
+          <div class="graph">
+            <div id="titleGraph">
+              <input id="GraphName" type="text" placeholder="Name your graph" />
+            </div>
+            <svg id="graphCanvas" width="300" height="300"></svg>
+          </div>
+          <div class="details">
+            <h1>TANGO NODE</h1>
+            <h6>Sylvain Filoni — version 0.1.0</h6>
+            <p>Cette application vous permet de créer un réseau de nœuds.</p>
+            <ul id="graphlist"></ul>
+            <p>COMMANDES<br />
+            ————————</p>
+              <ul>
+                <li><strong>Clic Droit:</strong> Sélectionner Parent
+                <br /> —› <strong>Dble-clic sur Cible:</strong> Relier</li>
+                <li><strong>Dble-clic sur un fil:</strong> Délier</li>
+                <li><strong>Ctrl+ N :</strong> Push Random Node</li>
+                <li><strong>Ctrl+ D au survol de node:</strong> Supprimer</li>
+              </ul>
+            <p>——————</>
+            <h6>MANUAL GRAPH DEBUGGER</h6>
+
+
+            <p>
+              <input id="NodeValue" type="text" placeholder="Name your node" />
+              <select id="nSize">
+                <option value="12">S</option>
+                <option value="24">M</option>
+                <option value="36">L</option>
+              </select>
+            <button onclick="addNewNode()">Nouveau Node</button></p>
+            <p><select id="selectP"></select><button onclick="btnrmNode()">Supprimer</button></p>
+            <!--<button onclick="charge()">Charge</button>-->
+            <p><select id="selectS"></select><select id="selectT"></select>
+            <button onclick="bind()">Lier</button>
+            <button onclick="unbind()">Délier</button></p>
+            <p><button onclick="addRandom()">Push Random</button>
+              <button onclick="deleteLinks()">ClearLinks</button>
+            <button onclick="deleteAll()">ClearAll</button>
+            <button id="toggle">Toggle Text</button>
+            <button onclick="consoleLinks()">Log Links</button>
+            <button onclick="consoleNodes()">Log Nodes</button></p>
+            <p><input id="GraphID" type="hidden" placeholder="GraphID" />
+              <button onclick="sendToDB()">SendDB</button>
+            <button onclick="updateToDB()">updateDB</button></p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+    $(document).ready(function(){
+      $("#toggleText").click(function() {
+      $(".textClass").toggleClass('hide');
+      });
+      $(".addBtn").click(function() {
+      $(".textClass").addClass('hide');
+      });
+    });
+    </script>
+    <script src="./graphupdate.js"></script>
+  </body>
+</html>
